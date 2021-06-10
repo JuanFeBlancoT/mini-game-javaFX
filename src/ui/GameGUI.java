@@ -30,10 +30,8 @@ public class GameGUI {
 	private boolean loose;
 	
     @FXML
-    private Label minutesTxt;
+    private Label state;
 
-    @FXML
-    private Label secondsTxt;
 	
 	Thread t;
 	
@@ -44,15 +42,18 @@ public class GameGUI {
 	public void initialize() {
 		player = new Player(playerBall.getLayoutX(),playerBall.getLayoutY());
 		enemy = new EnemyThread(enemie.getLayoutX(), enemie.getLayoutY(), this);
-		
-		new Thread(enemy).start();
 		timer = new TimerThread(this);
-		new Thread(timer).start();
 		
-		System.out.println(playerBall.getLayoutX()+","+	playerBall.getLayoutY());
+		enemy.start();
+		timer.start();
+		/*new Thread(enemy).start();
+		
+		new Thread(timer).start();*/
+		
 	}
 	
-    @FXML
+    @SuppressWarnings("incomplete-switch")
+	@FXML
     void xd(KeyEvent event) {
     	if(!loose) {
     		switch (event.getCode()) {
@@ -80,14 +81,6 @@ public class GameGUI {
     	System.out.println();
     }
 
-    public void moveStuff() {
-    	while(!loose) {
-    		enemy.setObjX(player.getPosX());
-    		enemy.setObjY(player.getPosY());
-    		enemie.setLayoutX(enemy.getPosX());
-    		enemie.setLayoutY(enemy.getPosY());
-    	}
-    }
 	public void updateEnemy() {
 		enemy.setObjX(player.getPosX());
 		enemy.setObjY(player.getPosY());
@@ -97,8 +90,9 @@ public class GameGUI {
 		if(distanceBetween() < playerBall.getRadius()*2) {
 			enemy.setStop(true);
 			loose = true;
+			timer.stop();
+			enemy.stop();
 		}
-		 
 	}
 		
 	public double distanceBetween() {
@@ -107,10 +101,5 @@ public class GameGUI {
 		
 		double distance = Math.sqrt(a+b);
 		return distance;
-	}
-	
-	public void setText() {
-		minutesTxt.setText(timer.getMinutes()+":");
-		secondsTxt.setText(timer.getSeconds()+" ");
 	}
 }

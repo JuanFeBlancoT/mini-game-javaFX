@@ -2,7 +2,7 @@ package thread;
 
 import ui.GameGUI;
 
-public class EnemyThread implements Runnable{
+public class EnemyThread extends Thread{
 
 	
 	private double posX, posY, objX, objY, speed;

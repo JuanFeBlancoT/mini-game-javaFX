@@ -2,16 +2,14 @@ package thread;
 
 import ui.GameGUI;
 
-public class TimerThread implements Runnable{
+public class TimerThread extends Thread{
 
 	public int seconds, minutes;
 	private boolean count;
-	private GameGUI gui;
 	
 	public TimerThread(GameGUI gui) {
 		seconds = 0;
 		minutes = 0;
-		this.gui = gui;
 	}
 
 	@Override
@@ -23,8 +21,7 @@ public class TimerThread implements Runnable{
 				minutes++;
 			}
 			
-			gui.setText();
-			//System.out.println(minutes+":"+seconds);
+			System.out.println(minutes+":"+seconds);
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {

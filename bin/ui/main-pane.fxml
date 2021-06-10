@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#xd" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -12,7 +13,10 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bfa386" height="56.0" layoutX="-4.0" layoutY="344.0" opacity="0.0" stroke="TRANSPARENT" strokeType="INSIDE" width="606.0" />
       <Button fx:id="btnMove" layoutX="267.0" layoutY="357.0" mnemonicParsing="false" onAction="#movePLayer" opacity="0.0" style="-fx-background-color: #dda684;" text="MOVE" />
       <Circle fx:id="enemie" fill="#ff4f56" layoutX="300.0" layoutY="200.0" radius="20.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Label fx:id="minutesTxt" layoutX="23.0" layoutY="14.0" text="Label" />
-      <Label fx:id="secondsTxt" layoutX="72.0" layoutY="14.0" text="Label" />
+      <Label fx:id="state" layoutX="264.0" layoutY="14.0" opacity="0.46" text="Survive">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
    </children>
 </Pane>
